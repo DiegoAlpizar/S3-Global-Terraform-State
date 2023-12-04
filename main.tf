@@ -1,15 +1,12 @@
 terraform {
 
+  # Partial configuration. The other settings (e.g., bucket, region) 
+  # will be passed in from a file via -backend-config arguments to 
+  # 'terraform init'
   backend "s3" {
     
-    bucket = "global-terraform-state-demo"
     key = "global/terraform.tfstate"
-    encrypt = true
-
-    dynamodb_table = "terraform_state_lock"
-
-    region = "us-east-1"
-
+    
   }
 
   required_providers {
